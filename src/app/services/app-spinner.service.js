@@ -1,29 +1,29 @@
 ﻿(function () {
-    'use strict';
+	'use strict';
 
-    angular.module('sportsAdmin').factory('appSpinner', appSpinner);
+	angular.module('sportsAdmin').factory('appSpinner', appSpinner);
 
-    appSpinner.$inject = ['$rootScope'];
+	appSpinner.$inject = ['$rootScope'];
 
-    function appSpinner($rootScope) {
-        var service = {
-            hideSpinner: hideSpinner,
-            showSpinner: showSpinner
-        };
+	function appSpinner($rootScope) {
+		var service = {
+			hideSpinner: hideSpinner,
+			showSpinner: showSpinner
+		};
 
-        return service;
+		return service;
 
 
-        function hideSpinner() {
-            toggleSpinner(false);
-        }
+		function hideSpinner() {
+			toggleSpinner(false);
+		}
 
-        function showSpinner(message) {
-            toggleSpinner(true, message);
-        }
+		function showSpinner(message) {
+			toggleSpinner(true, message);
+		}
 
-        function toggleSpinner(show, message) {
-            $rootScope.$broadcast('spinner.toggle', { show: show, message: message });
-        }
-    }
+		function toggleSpinner(show, message) {
+			$rootScope.$broadcast('spinner.toggle', {show: show, message: message});
+		}
+	}
 })();

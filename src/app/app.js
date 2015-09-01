@@ -1,28 +1,28 @@
 (function () {
-    'use strict';
-    var app = angular.module('sportsAdmin', [
-        // Angular modules
-        'ngRoute',
+	'use strict';
+	var app = angular.module('sportsAdmin', [
+		// Angular modules
+		'ngRoute',
 
-        // 3rd Party Modules
-        'ui.bootstrap'
-    ]);
+		// 3rd Party Modules
+		'ui.bootstrap'
+	]);
 
-    app.config(['$routeProvider', configRoutes]);
+	app.config(['$routeProvider', configRoutes]);
 
-    function configRoutes($routeProvider) {
-        $routeProvider
-            .when('/', {
-                templateUrl: 'app/home/home.html',
-                controller: 'HomeCtrl',
-                controllerAs: 'vm'
-            });
+	function configRoutes($routeProvider) {
+		$routeProvider
+			.when('/', {
+				templateUrl: 'app/home/home.html',
+				controller: 'HomeCtrl',
+				controllerAs: 'vm'
+			});
 
 
-        $routeProvider.otherwise('/');
-    }
+		$routeProvider.otherwise('/');
+	}
 
-    app.run(['$route', function ($route) {
-        // Include $route to kick start the router.
-    }]);
+	app.run(['$route', function ($route) {
+		// Include $route to kick start the router.
+	}]);
 })();

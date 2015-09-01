@@ -1,22 +1,22 @@
 (function () {
-    'use strict';
+	'use strict';
 
-    angular.module('sportsAdmin').controller('HomeCtrl', HomeCtrl);
+	angular.module('sportsAdmin').controller('HomeCtrl', HomeCtrl);
 
-    /* @ngInject */
-    function HomeCtrl() {
-        /* jshint validthis: true */
-        var vm = this;
+	/* @ngInject */
+	function HomeCtrl() {
+		/* jshint validthis: true */
+		var vm = this;
 
-        vm.activate = activate;
+		vm.activate = activate;
 
-        activate();
+		activate();
 
-        ////////////////
+		////////////////
 
-        function activate() {
-        }
+		function activate() {
+		}
 
 
-    }
+	}
 })();
