@@ -9,6 +9,7 @@
 		var vm = this;
 
 		vm.activate = activate;
+		vm.notesCollapsed = true;
 
 		activate();
 
@@ -16,6 +17,7 @@
 
 		function activate() {
 		}
+
 
 
 	}

@@ -14,4 +14,29 @@
 			</p>
 		</div>
 	</div>
+
+	<p>
+		<button class="btn btn-info" ng-click="vm.notesCollapsed = !vm.notesCollapsed">
+			Additional Notes
+		</button>
+	</p>
+
+	<div collapse="vm.notesCollapsed">
+		<div class="well in">
+			<h4>Tips</h4>
+			<ul>
+				<li>asdf</li>
+				<li>asf</li>
+				<li>adsf</li>
+			</ul>
+			<h4>Screens:</h4>
+			<dl class="dl-horizontal">
+				<dt>Home</dt>
+				<dd>Basic Home Screen</dd>
+				<dt>Leagues</dt>
+				<dd>Page of Leagues</dd>
+			</dl>
+		</div>
+	</div>
+
 </div>
