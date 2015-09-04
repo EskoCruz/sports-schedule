@@ -16,6 +16,16 @@
 				templateUrl: 'app/home/home.html',
 				controller: 'HomeCtrl',
 				controllerAs: 'vm'
+			})
+			.when('/leagues', {
+				templateUrl: 'app/leagues/leagues.html',
+				controller: 'LeaguesController',
+				controllerAs: 'vm',
+				resolve: {
+					initialData: ['sportsApi', function (sportsApi) {
+						return sportsApi.getLeagues();
+					}]
+				}
 			});
 
 
