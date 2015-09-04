@@ -16,7 +16,9 @@
 	</div>
 
 	<p>
-		<button class="btn btn-info" ng-click="vm.notesCollapsed = !vm.notesCollapsed">
+		<button class="btn btn-info" ng-click="vm.notesCollapsed = !vm.notesCollapsed"
+			popover="Click here for additional information" popover-trigger="mouseenter"
+			popover-placement="right">
 			Additional Notes
 		</button>
 	</p>
@@ -25,16 +27,26 @@
 		<div class="well in">
 			<h4>Tips</h4>
 			<ul>
-				<li>asdf</li>
-				<li>asf</li>
-				<li>adsf</li>
+				<li>Use the Home tab to create helpful announcement for coaches/parents to stay up-to-date.</li>
+				<li>It's good to configure Locations early in the process since you'll need to assign Locations for each game.</li>
+				<li>After creating games, you can always go back and change the start time.</li>
 			</ul>
 			<h4>Screens:</h4>
 			<dl class="dl-horizontal">
 				<dt>Home</dt>
 				<dd>Basic Home Screen</dd>
 				<dt>Leagues</dt>
-				<dd>Page of Leagues</dd>
+				<dd>This is your main starting point for Configuration.</dd>
+				<dt>Locations</dt>
+				<dd>Configure Locations which can be shared across leagues.</dd>
+				<dt>League Configuration</dt>
+				<dd>
+					<ol>
+						<li>Home screen</li>
+						<li>Teams</li>
+						<li>Games</li>
+					</ol>
+				</dd>
 			</dl>
 		</div>
 	</div>
