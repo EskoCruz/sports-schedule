@@ -14,7 +14,8 @@
 				<input type="text" class="form-control" placeholder="New League Name" ng-model="vm.newLeagueName">
 			</td>
 			<td>
-				<button type="submit" class="btn btn-primary" ng-click="vm.addItem()">
+				<button type="submit" class="btn btn-primary" ng-click="vm.addItem()"
+					tooltip="Click here to add a new league" tooltip-placement="left">
 					<span class="glyphicon glyphicon-plus"></span> Add
 				</button>
 			</td>
@@ -35,9 +36,10 @@
 						<li><a ng-click="vm.editItem(league)">Edit</a></li>
 						<li><a ng-click="vm.deleteItem(league.id)">Delete</a></li>
 					</ul>
-					<button class="btn btn-success" ng-show="vm.currentEdit[league.id]" ng-click="vm.saveItem(league)">Save</button>
-					<button class="btn btn-danger" ng-show="vm.currentEdit[league.id]" ng-click="vm.cancelEdit(league.id)">Cancel</button>
+
 				</div>
+				<button class="btn btn-success" ng-show="vm.currentEdit[league.id]" ng-click="vm.saveItem(league)">Save</button>
+				<button class="btn btn-danger" ng-show="vm.currentEdit[league.id]" ng-click="vm.cancelEdit(league.id)">Cancel</button>
 			</td>
 		</tr>
 
