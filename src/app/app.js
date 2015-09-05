@@ -26,6 +26,36 @@
 						return sportsApi.getLeagues();
 					}]
 				}
+			})
+			.when('/leagues/:id/teams', {
+				templateUrl: 'app/teams/teams.html',
+				controller: 'TeamsController',
+				controllerAs: 'vm',
+				resolve: {
+					initialData: ['$route', 'sportsApi', function ($route, sportsApi) {
+						return sportsApi.getTeams($route.current.params.id);
+					}]
+				}
+			})
+			.when('/leagues/:id/games', {
+				templateUrl: 'app/games/games.html',
+				controller: 'GamesController',
+				controllerAs: 'vm',
+				resolve: {
+					initialData: ['$route', 'sportsApi', function ($route, sportsApi) {
+						return sportsApi.getGames($route.current.params.id);
+					}]
+				}
+			})
+			.when('/leagues/:id/league-home', {
+				templateUrl: 'app/league-home/league-home.html',
+				controller: 'LeagueHomeController',
+				controllerAs: 'vm',
+				resolve: {
+					initialData: ['$route','sportsApi', function ($route, sportsApi) {
+						return sportsApi.getLeagues($route.current.params.id);
+					}]
+				}
 			});
 
 
