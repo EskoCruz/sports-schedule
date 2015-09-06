@@ -9,15 +9,15 @@
 		.module('sportsAdmin')
 		.controller('TeamsController', TeamsController);
 
-	TeamsController.$inject = ['initialData'];
+	TeamsController.$inject = ['$location', '$routeParams', 'initialData'];
 
 	/* @ngInject */
-	function TeamsController(initialData) {
+	function TeamsController($location, $routeParams, initialData) {
 		/* jshint validthis: true */
 		var vm = this;
 
 		vm.activate = activate;
-		//vm.title = 'TeamsController';
+		vm.go = go;
 
 		activate();
 
@@ -26,6 +26,8 @@
 		function activate() {
 		}
 
-
+		function go(path) {
+			$location.path('leagues/' + $routeParams.id + '/' + path);
+		}
 	}
 })();

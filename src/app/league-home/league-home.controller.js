@@ -9,15 +9,15 @@
 		.module('sportsAdmin')
 		.controller('LeagueHomeController', LeagueHomeController);
 
-	LeagueHomeController.$inject = ['initialData'];
+	LeagueHomeController.$inject = ['$location', '$routeParams', 'initialData'];
 
 	/* @ngInject */
-	function LeagueHomeController(initialData) {
+	function LeagueHomeController($location, $routeParams, initialData) {
 		/* jshint validthis: true */
 		var vm = this;
 
 		vm.activate = activate;
-		//vm.title = 'LeagueHomeController';
+		vm.go = go;
 
 		activate();
 
@@ -26,7 +26,9 @@
 		function activate() {
 		}
 
-
+		function go(path) {
+			$location.path('leagues/' + $routeParams.id + '/' + path);
+		}
 	}
 
 })();
