@@ -6,10 +6,10 @@
 		.module('sportsAdmin')
 		.controller('LeaguesController', LeaguesController);
 
-	LeaguesController.$inject = ['initialData', 'sportsApi'];
+	LeaguesController.$inject = ['$modal', 'initialData', 'sportsApi'];
 
 	/* @ngInject */
-	function LeaguesController(initialData, sportsApi) {
+	function LeaguesController($modal, initialData, sportsApi) {
 		/* jshint validthis: true */
 		var vm = this;
 
@@ -48,8 +48,29 @@
 		}
 
 		function deleteItem(id) {
-			sportsApi.deleteLeague(id).then(function(data){
-				_.remove(vm.leagues, { 'id': id });
+
+			var modalInstance = $modal.open({
+				templateUrl: 'app/shared/confirm-modal.html',
+				controller: 'confirmModalController',
+				controllerAs: 'vm',
+				resolve: {
+					data: function () {
+						return {
+							title: 'Delete?',
+							message: 'Are you sure you want to Delete?',
+							buttons: ['OK', 'Cancel']
+						};
+					}
+				},
+				size: 'sm'
+			});
+
+			modalInstance.result.then(function () {
+				sportsApi.deleteLeague(id).then(function(data){
+					_.remove(vm.leagues, { 'id': id });
+				});
+			}, function () {
+				console.log('Modal Dismissed');
 			});
 		}
 
