@@ -1,5 +1,9 @@
 <div>
 	<h2>Leagues</h2>
+	<alert type="info" ng-show="vm.showHelpAlert" close="vm.hideAlert()">
+		First create your league. Then "Configure" your league by creating teams and games.
+	</alert>
+
 	<table class="table table-bordered table-hover table-striped">
 		<thead>
 		<tr>

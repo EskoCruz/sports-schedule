@@ -22,6 +22,8 @@
 		vm.saveItem = saveItem;
 		vm.currentEdit = {};
 		vm.itemToEdit = {};
+		vm.hideAlert = hideAlert;
+		vm.showHelpAlert = true;
 
 		activate();
 
@@ -55,6 +57,10 @@
 			vm.currentEdit[item.id] = true;
 			vm.itemToEdit = angular.copy(item);
 
+		}
+
+		function hideAlert() {
+			vm.showHelpAlert = false;
 		}
 
 		function saveItem(item) {
