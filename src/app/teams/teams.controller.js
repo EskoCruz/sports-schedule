@@ -20,6 +20,8 @@
 		vm.go = go;
 
 		vm.teams = initialData;
+		vm.toggleExpand = toggleExpand;
+		vm.accordionExpanded = true;
 
 		activate();
 
@@ -43,6 +45,12 @@
 				})
 				.sortBy('divisionName')
 				.value();
+		}
+
+		function toggleExpand(expand) {
+			_.forEach(vm.groups, function(group) {
+				group.isOpen = expand;
+			});
 		}
 	}
 })();

@@ -6,8 +6,27 @@
 		<tab heading="League Home" select="vm.go('league-home')"></tab>
 	</tabset>
 
-	<accordion>
-		<accordion-group ng-repeat="group in vm.groups" heading="{{ group.divisionName }}">
+	<p></p>
+
+	<div class="row">
+		<div class="col-md-4">
+			<!--<button class="btn btn-primary" ng-click="vm.editItem()">Add New Teams</button>-->
+			<!--<button class="btn btn-primary" ng-click="vm.showImport()">Import Teams</button>-->
+		</div>
+		<div class="col-md-4 col-md-offset-4">
+			<div class="btn-group pull-right">
+				<label class="btn btn-info" ng-model="vm.accordionExpanded" btn-radio="true" ng-click="vm.toggleExpand(true)">Expand All</label>
+				<label class="btn btn-info" ng-model="vm.accordionExpanded" btn-radio="false" ng-click="vm.toggleExpand(false)">Collapse All</label>
+			</div>
+		</div>
+	</div>
+	<p></p>
+
+	<accordion close-others="false">
+		<accordion-group ng-repeat="group in vm.groups" is-open="group.isOpen">
+			<accordion-heading>
+				{{ group.divisionName }} <i class="pull-right glyphicon" ng-class="{ 'glyphicon-chevron-down': group.isOpen, 'glyphicon-chevron-right': !group.isOpen }"></i>
+			</accordion-heading>
 			<table class="table table-striped table-hover table-condensed">
 				<thead>
 				<tr>

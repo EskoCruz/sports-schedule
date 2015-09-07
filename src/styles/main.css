@@ -123,3 +123,7 @@ body {
     color: #efb73e;
     padding: 0;
 }
+
+a.accordion-toggle:focus {
+	outline: none;
+}
