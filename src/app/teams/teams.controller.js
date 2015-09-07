@@ -26,10 +26,23 @@
 		////////////////
 
 		function activate() {
+			initializeGroups();
 		}
 
 		function go(path) {
 			$location.path('leagues/' + $routeParams.id + '/' + path);
+		}
+
+		function initializeGroups() {
+			vm.groups = _.chain(vm.teams)
+				.sortBy('name')
+				.groupBy('divisionName')
+				.pairs()
+				.map(function (item) {
+					return { divisionName: item[0], teams: item[1], isOpen: true };
+				})
+				.sortBy('divisionName')
+				.value();
 		}
 	}
 })();

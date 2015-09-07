@@ -2,14 +2,17 @@
  * Created by esko on 9/6/15.
  */
 (function () {
+
+	"use strict";
+
 	angular
 		.module('sportsAdmin')
-		.controller('confirmModalController', confirmModalController);
+		.controller('ConfirmModalController', ConfirmModalController);
 
-	confirmModalController.$inject = ['$modalInstance', 'data'];
+	ConfirmModalController.$inject = ['$modalInstance', 'data'];
 
 	/* @ngInject */
-	function confirmModalController($modalInstance, data) {
+	function ConfirmModalController($modalInstance, data) {
 		/* jshint validthis: true */
 		var vm = this;
 
