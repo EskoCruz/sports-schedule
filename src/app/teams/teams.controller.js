@@ -19,6 +19,8 @@
 		vm.activate = activate;
 		vm.go = go;
 
+		vm.teams = initialData;
+
 		activate();
 
 		////////////////
