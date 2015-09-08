@@ -21,14 +21,14 @@
 		function confirm(title, message, buttons) {
 			var modalInstance = $modal.open({
 				templateUrl: 'app/shared/confirm-modal.html',
-				controller: 'confirmModalController',
+				controller: 'ConfirmModalController',
 				controllerAs: 'vm',
 				resolve: {
 					data: function () {
 						return {
-							title: 'Delete?',
-							message: 'Are you sure you want to Delete?',
-							buttons: ['OK', 'Cancel']
+							title: title,
+							message: message,
+							buttons: buttons
 						};
 					}
 				},
