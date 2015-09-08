@@ -48,8 +48,7 @@
 		}
 
 		function deleteItem(id) {
-
-			dialogs.confirm('Delete?', 'Are you sure you want to Delete?', ['OK', 'Cancel'])
+			dialogs.confirm('Delete?', 'Are you sure you want to delete this league?', ['OK', 'Cancel'])
 				.then(function () {
 					sportsApi.deleteLeague(id).then(function (data) {
 						_.remove(vm.leagues, {'id': id});
