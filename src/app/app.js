@@ -30,43 +30,46 @@
 						return sportsApi.getLeagues();
 					}]
 				}
+			})
+			.state('league-teams', {
+				url: '/leagues/:id/teams',
+				templateUrl: 'app/teams/teams.html',
+				controller: 'TeamsController',
+				controllerAs: 'vm',
+				resolve: {
+					initialData: ['$stateParams', 'sportsApi', function ($stateParams, sportsApi) {
+						return sportsApi.getTeams($stateParams.id);
+					}]
+				}
+			})
+			.state('/league-games', {
+				url: '/leagues/:id/games',
+				templateUrl: 'app/games/games.html',
+				controller: 'GamesController',
+				controllerAs: 'vm',
+				resolve: {
+					initialData: ['$stateParams', 'gamesInitialDataService', function ($stateParams, gamesInitialDataService) {
+						return gamesInitialDataService.getData($stateParams.id);
+					}]
+				}
+			})
+			.state('league-home', {
+				url: '/leagues/:id/league-home',
+				templateUrl: 'app/league-home/league-home.html',
+				controller: 'LeagueHomeController',
+				controllerAs: 'vm',
+				resolve: {
+					initialData: ['$stateParams','sportsApi', function ($stateParams, sportsApi) {
+						return sportsApi.getLeagues($stateParams.id);
+					}]
+				}
 			});
-			//.when('/leagues/:id/teams', {
-			//	templateUrl: 'app/teams/teams.html',
-			//	controller: 'TeamsController',
-			//	controllerAs: 'vm',
-			//	resolve: {
-			//		initialData: ['$route', 'sportsApi', function ($route, sportsApi) {
-			//			return sportsApi.getTeams($route.current.params.id);
-			//		}]
-			//	}
-			//})
-			//.when('/leagues/:id/games', {
-			//	templateUrl: 'app/games/games.html',
-			//	controller: 'GamesController',
-			//	controllerAs: 'vm',
-			//	resolve: {
-			//		initialData: ['$route', 'gamesInitialDataService', function ($route, gamesInitialDataService) {
-			//			return gamesInitialDataService.getData($route.current.params.id);
-			//		}]
-			//	}
-			//})
-			//.when('/leagues/:id/league-home', {
-			//	templateUrl: 'app/league-home/league-home.html',
-			//	controller: 'LeagueHomeController',
-			//	controllerAs: 'vm',
-			//	resolve: {
-			//		initialData: ['$route','sportsApi', function ($route, sportsApi) {
-			//			return sportsApi.getLeagues($route.current.params.id);
-			//		}]
-			//	}
-			//});
 
 
 		$urlRouterProvider.otherwise('/');
 	}
 
 	app.run(['$state', function ($state) {
-		// Include $route to kick start the router.
+		// Include $stateParams to kick start the router.
 	}]);
 })();

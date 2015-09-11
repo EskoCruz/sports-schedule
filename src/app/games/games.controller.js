@@ -9,10 +9,10 @@
 		.module('sportsAdmin')
 		.controller('GamesController', GamesController);
 
-	GamesController.$inject = ['$modal', '$location', '$routeParams', 'initialData', 'dialogsService', 'sportsApi'];
+	GamesController.$inject = ['$modal', '$location', '$stateParams', 'initialData', 'dialogsService', 'sportsApi'];
 
 	/* @ngInject */
-	function GamesController($modal, $location, $routeParams, initialData, dialogs, sportsApi) {
+	function GamesController($modal, $location, $stateParams, initialData, dialogs, sportsApi) {
 		/* jshint validthis: true */
 		var vm = this;
 
@@ -42,7 +42,7 @@
 		}
 
 		function go(path) {
-			$location.path('leagues/' + $routeParams.id + '/' + path);
+			$location.path('leagues/' + $stateParams.id + '/' + path);
 		}
 
 		function deleteItem(id) {
@@ -71,7 +71,7 @@
 			});
 
 			modalInstance.result.then(function (result) {
-				result.leagueId = $routeParams.id;
+				result.leagueId = $stateParams.id;
 				sportsApi.saveGame(result).then(function (data) {
 					if (game) {
 						_.assign(game, data);
