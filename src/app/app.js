@@ -2,22 +2,26 @@
 	'use strict';
 	var app = angular.module('sportsAdmin', [
 		// Angular modules
-		'ngRoute',
+		//'ngRoute',
 
 		// 3rd Party Modules
-		'ui.bootstrap'
+		'ui.bootstrap',
+		'ui.router'
 	]);
 
-	app.config(['$routeProvider', configRoutes]);
+	//app.config(['$routeProvider', configRoutes]);
+	app.config(['$stateProvider', '$urlRouterProvider', configRoutes]);
 
-	function configRoutes($routeProvider) {
-		$routeProvider
-			.when('/', {
+	function configRoutes($stateProvider, $urlRouterProvider) {
+		$stateProvider
+			.state('home', {
+				url: '/',
 				templateUrl: 'app/home/home.html',
 				controller: 'HomeCtrl',
 				controllerAs: 'vm'
 			})
-			.when('/leagues', {
+			.state('leagues', {
+				url: '/leagues',
 				templateUrl: 'app/leagues/leagues.html',
 				controller: 'LeaguesController',
 				controllerAs: 'vm',
@@ -26,43 +30,43 @@
 						return sportsApi.getLeagues();
 					}]
 				}
-			})
-			.when('/leagues/:id/teams', {
-				templateUrl: 'app/teams/teams.html',
-				controller: 'TeamsController',
-				controllerAs: 'vm',
-				resolve: {
-					initialData: ['$route', 'sportsApi', function ($route, sportsApi) {
-						return sportsApi.getTeams($route.current.params.id);
-					}]
-				}
-			})
-			.when('/leagues/:id/games', {
-				templateUrl: 'app/games/games.html',
-				controller: 'GamesController',
-				controllerAs: 'vm',
-				resolve: {
-					initialData: ['$route', 'gamesInitialDataService', function ($route, gamesInitialDataService) {
-						return gamesInitialDataService.getData($route.current.params.id);
-					}]
-				}
-			})
-			.when('/leagues/:id/league-home', {
-				templateUrl: 'app/league-home/league-home.html',
-				controller: 'LeagueHomeController',
-				controllerAs: 'vm',
-				resolve: {
-					initialData: ['$route','sportsApi', function ($route, sportsApi) {
-						return sportsApi.getLeagues($route.current.params.id);
-					}]
-				}
 			});
+			//.when('/leagues/:id/teams', {
+			//	templateUrl: 'app/teams/teams.html',
+			//	controller: 'TeamsController',
+			//	controllerAs: 'vm',
+			//	resolve: {
+			//		initialData: ['$route', 'sportsApi', function ($route, sportsApi) {
+			//			return sportsApi.getTeams($route.current.params.id);
+			//		}]
+			//	}
+			//})
+			//.when('/leagues/:id/games', {
+			//	templateUrl: 'app/games/games.html',
+			//	controller: 'GamesController',
+			//	controllerAs: 'vm',
+			//	resolve: {
+			//		initialData: ['$route', 'gamesInitialDataService', function ($route, gamesInitialDataService) {
+			//			return gamesInitialDataService.getData($route.current.params.id);
+			//		}]
+			//	}
+			//})
+			//.when('/leagues/:id/league-home', {
+			//	templateUrl: 'app/league-home/league-home.html',
+			//	controller: 'LeagueHomeController',
+			//	controllerAs: 'vm',
+			//	resolve: {
+			//		initialData: ['$route','sportsApi', function ($route, sportsApi) {
+			//			return sportsApi.getLeagues($route.current.params.id);
+			//		}]
+			//	}
+			//});
 
 
-		$routeProvider.otherwise('/');
+		$urlRouterProvider.otherwise('/');
 	}
 
-	app.run(['$route', function ($route) {
+	app.run(['$state', function ($state) {
 		// Include $route to kick start the router.
 	}]);
 })();
