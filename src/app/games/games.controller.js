@@ -63,7 +63,7 @@
 					data: function () {
 						return {
 							locations: _.sortBy(vm.locations, 'name'),
-							teams: _.sortBy(vm.teams, 'divisionName', 'name'),
+							teams: _.sortBy(vm.teams, 'divisionName, name'),
 							itemToEdit: game
 						};
 					}
@@ -75,7 +75,7 @@
 				sportsApi.saveGame(result).then(function (data) {
 					if (game) {
 						_.assign(game, data);
-						var index = _.findIndex(vm.eventSources[0], { 'id': game.id });
+						//var index = _.findIndex(vm.eventSources[0], { 'id': game.id });
 					} else {
 						vm.games.push(data);
 					}

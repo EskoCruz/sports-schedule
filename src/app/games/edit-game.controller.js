@@ -51,8 +51,8 @@
 		}
 
 		function combine(date, time) {
-			var dateString = moment(date).filter('MM/DD/YYYY');
-			return moment(dateString + ' ' + moment(time).format('HH:mm')).format('YYYY-MM-DDHH:mm:00');
+			var dateString = moment(date).format('MM/DD/YYYY');
+			return moment(dateString + ' ' + moment(time).format('HH:mm')).format('YYYY-MM-DDTHH:mm:00');
 		}
 
 		function cancel() {
