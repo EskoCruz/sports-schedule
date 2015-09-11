@@ -13,9 +13,9 @@ function EditTeamController($modalInstance, data) {
 	var vm = this;
 
 	vm.activate = activate;
-	vm.title = 'EditTeamController';
 	vm.cancel = cancel;
 	vm.save = save;
+
 	vm.properties = data;
 	vm.editableItem = angular.copy(data.itemToEdit);
 	vm.title = (data.itemToEdit ? 'Edit Team' : 'Add New Team');
@@ -26,6 +26,8 @@ function EditTeamController($modalInstance, data) {
 
 	function activate() {
 	}
+
+
 
 	function cancel() {
 		$modalInstance.dismiss();

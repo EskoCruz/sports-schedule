@@ -17,6 +17,7 @@
 		var vm = this;
 
 		vm.activate = activate;
+		vm.active = true;
 		vm.go = go;
 
 		activate();

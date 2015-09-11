@@ -9,25 +9,78 @@
 		.module('sportsAdmin')
 		.controller('GamesController', GamesController);
 
-	GamesController.$inject = ['$location', '$routeParams', 'initialData'];
+	GamesController.$inject = ['$modal', '$location', '$routeParams', 'initialData', 'dialogsService', 'sportsApi'];
 
 	/* @ngInject */
-	function GamesController($location, $routeParams, initialData) {
+	function GamesController($modal, $location, $routeParams, initialData, dialogs, sportsApi) {
 		/* jshint validthis: true */
 		var vm = this;
 
 		vm.activate = activate;
+		vm.active = true;
 		vm.go = go;
+		vm.games = initialData.games;
+		vm.teams = initialData.teams;
+		vm.locations = initialData.locations;
+		vm.teamsLookup = {};
+		vm.locationsLookup = {};
+
+		vm.deleteItem = deleteItem;
+		vm.editItem = editItem;
 
 		activate();
 
 		////////////////
 
 		function activate() {
+			_.forEach(vm.teams, function (team) {
+				vm.teamsLookup[team.id] = team.name;
+			});
+			_.forEach(vm.locations, function (location) {
+				vm.locationsLookup[location.id] = location.name;
+			});
 		}
 
 		function go(path) {
 			$location.path('leagues/' + $routeParams.id + '/' + path);
+		}
+
+		function deleteItem(id) {
+			dialogs.confirm('Delete?', 'Delete this game?', ['OK', 'Cancel'])
+				.then(function () {
+					sportsApi.deleteGame(id).then(function (data) {
+						_.remove(vm.games, { 'id': id });
+					});
+				});
+		}
+
+		function editItem(game) {
+			var modalInstance = $modal.open({
+				templateUrl: 'app/games/edit-game.html',
+				controller: 'EditGameController',
+				controllerAs: 'vm',
+				resolve: {
+					data: function () {
+						return {
+							locations: _.sortBy(vm.locations, 'name'),
+							teams: _.sortBy(vm.teams, 'divisionName', 'name'),
+							itemToEdit: game
+						};
+					}
+				}
+			});
+
+			modalInstance.result.then(function (result) {
+				result.leagueId = $routeParams.id;
+				sportsApi.saveGame(result).then(function (data) {
+					if (game) {
+						_.assign(game, data);
+						var index = _.findIndex(vm.eventSources[0], { 'id': game.id });
+					} else {
+						vm.games.push(data);
+					}
+				});
+			});
 		}
 
 	}
