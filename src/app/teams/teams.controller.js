@@ -75,6 +75,7 @@
 
 		function go(path) {
 			$location.path('leagues/' + $stateParams.id + '/' + path);
+			//$state.go('league-games', { id: $stateParams.id });
 		}
 
 		function initializeGroups() {

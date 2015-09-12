@@ -43,6 +43,7 @@
 
 		function go(path) {
 			$location.path('leagues/' + $stateParams.id + '/' + path);
+			//$state.go('league-teams', { id: $stateParams.id });
 		}
 
 		function deleteItem(id) {
