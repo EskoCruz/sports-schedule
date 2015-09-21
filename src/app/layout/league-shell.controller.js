@@ -15,21 +15,21 @@ function LeagueShellController($state, $stateParams) {
 	vm.activate = activate;
 	vm.leagueId = $stateParams.leagueId;
 
-	activate();
-
-	////////////////
-
-	function activate() {
-		_.each(vm.tabs, function (tab) {
-			tab.active = ($state.current.name == tab.state);
-		});
-	}
-
 	vm.tabs = [
 		{text: 'Teams', state: 'league.teams'},
 		{text: 'Games', state: 'league.games'},
 		{text: 'Games Calendar', state: 'league.games-calendar'},
 		{text: 'League Home', state: 'league.home'}
 	];
+
+	////////////////
+
+	activate();
+
+	function activate() {
+		_.each(vm.tabs, function (tab) {
+			tab.active = ($state.current.name == tab.state);
+		});
+	}
 
 }
