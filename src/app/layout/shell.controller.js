@@ -1,11 +1,11 @@
 (function () {
 	'use strict';
 
-	angular.module('sportsAdmin').controller('ShellCtrl', ShellCtrl);
+	angular.module('sportsAdmin').controller('ShellController', ShellController);
 
-	ShellCtrl.$inject = ['$rootScope'];
+	ShellController.$inject = ['$rootScope'];
 
-	function ShellCtrl($rootScope) {
+	function ShellController($rootScope) {
 		/* jshint validthis:true */
 		var vm = this;
 

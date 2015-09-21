@@ -36,7 +36,7 @@
 						Action <span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu" role="menu">
-						<li><a ui-sref="league-teams({ 'id': league.id })">Configure</a></li>
+						<li><a ui-sref="league.teams({ 'leagueId': league.id })">Configure</a></li>
 						<li><a ng-click="vm.editItem(league)">Edit</a></li>
 						<li><a ng-click="vm.deleteItem(league.id)">Delete</a></li>
 					</ul>

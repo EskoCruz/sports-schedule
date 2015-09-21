@@ -1,0 +1,7 @@
+<div>
+	<h2>Configuration</h2>
+	<tabset>
+		<tab ng-repeat="tab in vm.tabs" heading="{{ tab.text }}" ui-sref="{{ tab.state }}" active="tab.active"></tab>
+	</tabset>
+	<div ui-view="tabContent" id="tabContent" class="container admin-content"></div>
+</div>

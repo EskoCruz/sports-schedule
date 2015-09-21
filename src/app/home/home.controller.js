@@ -1,10 +1,10 @@
 (function () {
 	'use strict';
 
-	angular.module('sportsAdmin').controller('HomeCtrl', HomeCtrl);
+	angular.module('sportsAdmin').controller('HomeController', HomeController);
 
 	/* @ngInject */
-	function HomeCtrl() {
+	function HomeController() {
 		/* jshint validthis: true */
 		var vm = this;
 
@@ -17,8 +17,6 @@
 
 		function activate() {
 		}
-
-
 
 	}
 })();

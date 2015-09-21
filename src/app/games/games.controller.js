@@ -9,16 +9,14 @@
 		.module('sportsAdmin')
 		.controller('GamesController', GamesController);
 
-	GamesController.$inject = ['$modal', '$location', '$stateParams', 'initialData', 'dialogsService', 'sportsApi'];
+	GamesController.$inject = ['$modal', '$stateParams', 'initialData', 'dialogsService', 'sportsApi'];
 
 	/* @ngInject */
-	function GamesController($modal, $location, $stateParams, initialData, dialogs, sportsApi) {
+	function GamesController($modal, $stateParams, initialData, dialogs, sportsApi) {
 		/* jshint validthis: true */
 		var vm = this;
 
 		vm.activate = activate;
-		vm.active = true;
-		vm.go = go;
 		vm.games = initialData.games;
 		vm.teams = initialData.teams;
 		vm.locations = initialData.locations;
@@ -39,11 +37,6 @@
 			_.forEach(vm.locations, function (location) {
 				vm.locationsLookup[location.id] = location.name;
 			});
-		}
-
-		function go(path) {
-			$location.path('leagues/' + $stateParams.id + '/' + path);
-			//$state.go('league-teams', { id: $stateParams.id });
 		}
 
 		function deleteItem(id) {

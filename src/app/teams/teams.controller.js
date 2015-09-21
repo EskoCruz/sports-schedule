@@ -9,16 +9,16 @@
 		.module('sportsAdmin')
 		.controller('TeamsController', TeamsController);
 
-	TeamsController.$inject = ['$modal', '$location', '$stateParams', 'sportsApi', 'initialData', 'dialogsService'];
+	TeamsController.$inject = ['$modal', '$state', '$stateParams', 'sportsApi', 'initialData', 'dialogsService'];
 
 	/* @ngInject */
-	function TeamsController($modal, $location, $stateParams, sportsApi, initialData, dialogs) {
+	function TeamsController($modal, $state, $stateParams, sportsApi, initialData, dialogs) {
 		/* jshint validthis: true */
 		var vm = this;
 
 		vm.activate = activate;
-		vm.active = true;
-		vm.go = go;
+		//vm.active = true;
+		//vm.go = go;
 
 		vm.teams = initialData;
 		vm.toggleExpand = toggleExpand;
@@ -73,10 +73,10 @@
 			});
 		}
 
-		function go(path) {
-			$location.path('leagues/' + $stateParams.id + '/' + path);
-			//$state.go('league-games', { id: $stateParams.id });
-		}
+		//function go(path) {
+		//	//$location.path('leagues/' + $stateParams.id + '/' + path);
+		//	$state.go('league-games', { id: $stateParams.id });
+		//}
 
 		function initializeGroups() {
 			vm.groups = _.chain(vm.teams)
