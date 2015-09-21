@@ -29,6 +29,7 @@
 		vm.calendarConfig = {
 			height: 550,
 			header: {
+				left: 'month agendaWeek agendaDay',
 				center: 'title'
 			}
 		};
