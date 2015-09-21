@@ -6,7 +6,8 @@
 
 		// 3rd Party Modules
 		'ui.bootstrap',
-		'ui.router'
+		'ui.router',
+		'ui.calendar'
 	]);
 
 	//app.config(['$routeProvider', configRoutes]);
@@ -58,6 +59,22 @@
 				views: {
 					tabContent: {
 						templateUrl: 'app/games/games.html',
+						controller: 'GamesController',
+						controllerAs: 'vm',
+						resolve: {
+							initialData: ['$stateParams', 'gamesInitialDataService', function ($stateParams, gamesInitialDataService) {
+								return gamesInitialDataService.getData($stateParams.leagueId);
+							}]
+						}
+					}
+				}
+
+			})
+			.state('league.games-calendar', {
+				url: '/games-calendar',
+				views: {
+					tabContent: {
+						templateUrl: 'app/games/games-calendar.html',
 						controller: 'GamesController',
 						controllerAs: 'vm',
 						resolve: {

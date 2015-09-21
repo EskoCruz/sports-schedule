@@ -28,6 +28,7 @@ function LeagueShellController($state, $stateParams) {
 	vm.tabs = [
 		{text: 'Teams', state: 'league.teams'},
 		{text: 'Games', state: 'league.games'},
+		{text: 'Games Calendar', state: 'league.games-calendar'},
 		{text: 'League Home', state: 'league.home'}
 	];
 
