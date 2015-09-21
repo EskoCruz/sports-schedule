@@ -90,7 +90,7 @@
 		$urlRouterProvider.otherwise('/');
 	}
 
-	app.run(['$state', function ($state) {
+	app.run(['$state', 'stateWatcherService', function ($state, stateWatcherService) {
 		// Include $route to kick start the router.
 	}]);
 })();
