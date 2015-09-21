@@ -27,7 +27,10 @@
 		vm.editItem = editItem;
 
 		vm.calendarConfig = {
-			height: 550
+			height: 550,
+			header: {
+				center: 'title'
+			}
 		};
 
 		activate();
