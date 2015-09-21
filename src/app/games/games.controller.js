@@ -30,8 +30,11 @@
 			height: 550,
 			header: {
 				left: 'month agendaWeek agendaDay',
-				center: 'title'
-			}
+				center: 'title',
+				right: 'today prev,next'
+			},
+			defaultView: 'agendaDay',
+			scrollTime: '08:00:00'
 		};
 
 		activate();
