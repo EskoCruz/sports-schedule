@@ -35,15 +35,21 @@
 			},
 			defaultView: 'agendaDay',
 			scrollTime: '08:00:00',
-			dayClick: dayClick
+			dayClick: dayClick,
+			editable: true,
+			eventClick: eventClick
 		};
 
 		activate();
 
 		////////////////
 
-		function dayClick(date) {
+		function eventClick(calEvent) {
+			var game = _.find(vm.games, { 'id': calEvent.id });
+			editItem(game);
+		}
 
+		function dayClick(date) {
 			uiCalendarConfig.calendars.gamesCalendar.fullCalendar('changeView', 'agendaDay');
 			uiCalendarConfig.calendars.gamesCalendar.fullCalendar('gotoDate', date);
 		}
@@ -101,9 +107,11 @@
 				sportsApi.saveGame(result).then(function (data) {
 					if (game) {
 						_.assign(game, data);
-						//var index = _.findIndex(vm.eventSources[0], { 'id': game.id });
+						var index = _.findIndex(vm.eventSources[0], { 'id': data.id });
+						vm.eventSources[0][index] = mapToGameEvent(data);
 					} else {
 						vm.games.push(data);
+						vm.gameEvents.push(mapToGameEvent(data))
 					}
 				});
 			});
