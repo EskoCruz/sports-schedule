@@ -29,7 +29,7 @@
 		vm.calendarConfig = {
 			height: 550,
 			header: {
-				left: 'month agendaWeek agendaDay',
+				left: 'month,agendaWeek,agendaDay',
 				center: 'title',
 				right: 'today prev,next'
 			},
@@ -37,12 +37,19 @@
 			scrollTime: '08:00:00',
 			dayClick: dayClick,
 			editable: true,
-			eventClick: eventClick
+			eventClick: eventClick,
+			eventDrop: eventDrop
 		};
 
 		activate();
 
 		////////////////
+
+		function eventDrop(calEvent) {
+			var game = _.find(vm.games, { 'id': calEvent.id });
+			game.time = moment(calEvent.start).format('YYYY-MM-DDTHH:mm:00');
+			sportsApi.saveGame(game);
+		}
 
 		function eventClick(calEvent) {
 			var game = _.find(vm.games, { 'id': calEvent.id });

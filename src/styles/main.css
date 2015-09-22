@@ -124,6 +124,8 @@ body {
     padding: 0;
 }
 
-a.accordion-toggle:focus {
+a.accordion-toggle:focus, .fc-button:focus {
 	outline: none;
 }
+
+
