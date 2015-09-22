@@ -9,10 +9,10 @@
 		.module('sportsAdmin')
 		.controller('GamesController', GamesController);
 
-	GamesController.$inject = ['$modal', '$stateParams', 'initialData', 'dialogsService', 'sportsApi'];
+	GamesController.$inject = ['$modal', '$stateParams', 'initialData', 'dialogsService', 'sportsApi', 'uiCalendarConfig'];
 
 	/* @ngInject */
-	function GamesController($modal, $stateParams, initialData, dialogs, sportsApi) {
+	function GamesController($modal, $stateParams, initialData, dialogs, sportsApi, uiCalendarConfig) {
 		/* jshint validthis: true */
 		var vm = this;
 
@@ -34,12 +34,19 @@
 				right: 'today prev,next'
 			},
 			defaultView: 'agendaDay',
-			scrollTime: '08:00:00'
+			scrollTime: '08:00:00',
+			dayClick: dayClick
 		};
 
 		activate();
 
 		////////////////
+
+		function dayClick(date) {
+
+			uiCalendarConfig.calendars.gamesCalendar.fullCalendar('changeView', 'agendaDay');
+			uiCalendarConfig.calendars.gamesCalendar.fullCalendar('gotoDate', date);
+		}
 
 		function activate() {
 			_.forEach(vm.teams, function (team) {
